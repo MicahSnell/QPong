@@ -12,25 +12,25 @@
 #include <QTimer>
 
 /**
- * @class PongArea base dialog widget that contains the PongArea and control buttons
+ * @class PongArea performs painting and calculations to provide Pong like game
  */
 class PongArea : public QFrame {
-	Q_OBJECT
+  Q_OBJECT
 public:
-	/**
-	 * @brief initilizes the area that the game is played in
-	 * @param parent the parent widget of this object, nullptr if not given
-	 */
-	PongArea (QWidget *parent = nullptr);
+  /**
+   * @brief initilizes the area that the game is played in
+   * @param parent the parent widget of this object, nullptr if not given
+   */
+  PongArea (QWidget *parent = nullptr);
 
   /**
    * @brief sets the position of paddles and ball when resized
    */
   void resizeEvent (QResizeEvent *event) override;
 
-	/**
-	 * @brief handles drawing of the PongArea
-	 */
+  /**
+   * @brief handles drawing of the PongArea
+   */
   void paintEvent (QPaintEvent *event) override;
 
 public slots:
@@ -40,19 +40,19 @@ public slots:
   void toggleGameActive ();
 
 private slots:
-	/**
+  /**
    * @brief updates the position of the ball, user and computer paddle
-	 */
+   */
   void updatePositions ();
 
 private:
   /** margin around the frame in pixels */
   static const int MARGIN_WIDTH_PX;
-	/** refresh rate for ball drawing */
+  /** refresh rate for ball drawing */
   static const int REFRESH_RATE_HZ;
-	/** width of paddles */
+  /** width of paddles */
   static const int PADDLE_WIDTH_PX;
-	/** height of paddles */
+  /** height of paddles */
   static const int PADDLE_HEIGHT_PX;
   /** width of net */
   static const int NET_WIDTH_PX;
@@ -61,15 +61,15 @@ private:
 
   /** drives frame updates at REFRESH_RATE_HZ */
   QTimer *gameTimer;
-	/** current position of users paddle */
+  /** current position of users paddle */
   QRectF userPaddle;
-	/** current position of computers paddle */
+  /** current position of computers paddle */
   QRectF compPaddle;
-	/** current position of the ball */
+  /** current position of the ball */
   QPointF ballPos;
-	/** users score */
+  /** users score */
   unsigned userScore;
-	/** computers score */
+  /** computers score */
   unsigned compScore;
   /** x direction of the ball */
   int ballDirectionX;
@@ -83,10 +83,10 @@ private:
 class QPong : public QDialog {
   Q_OBJECT
 public:
-	/**
-	 * @brief initializes the action area and control buttons
-	 * @param parent the parent widget of this object, nullptr if not given
-	 */
+  /**
+   * @brief initializes the pong area and control buttons
+   * @param parent the parent widget of this object, nullptr if not given
+   */
   QPong (QWidget *parent = nullptr);
 
   /**
