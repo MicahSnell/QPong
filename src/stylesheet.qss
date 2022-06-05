@@ -1,0 +1,32 @@
+QFrame {
+    background-color: rgba(18, 18, 18, 0.95);
+}
+
+QPushButton {
+    background-color: black;
+    color: white;
+    padding: 4px 6px 4px 6px;
+    border: 2px outset #4f4f4f;
+}
+
+QPushButton:pressed {
+    border: 2px inset #9f9f9f;
+}
+
+QLabel {
+    color: white;
+    background: none;
+}
+    
+* {
+    border: none;
+    outline: none;
+}
+
+PongArea {
+    background-color: black;
+}
+
+QPong {
+    background-color: #121212;
+}
