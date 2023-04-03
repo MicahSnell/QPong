@@ -1,27 +1,21 @@
-TARGET = qpong
-TEMPLATE = app
 QT += widgets
 
-SRC_DIR = ../src
+SRC_DIR = src
 MOC_DIR = moc
 OBJECTS_DIR = obj
 
+HEADERS += $$files($${SRC_DIR}/*.h)
+SOURCES += $$files($${SRC_DIR}/*.cpp)
+
 QMAKE_POST_LINK = \ 
-  $${QMAKE_COPY} $${SRC_DIR}/stylesheet.qss stylesheet.qss
+  $${QMAKE_COPY} ../$${SRC_DIR}/stylesheet.qss stylesheet.qss
 
 QMAKE_CLEAN += \
-  $${SRC_DIR}/*~
+  ../$${SRC_DIR}/*~
 
 QMAKE_DISTCLEAN += \
-  -r $${MOC_DIR} $${OBJECTS_DIR} \
-  stylesheet.qss
+  stylesheet.qss \
+  -r $${MOC_DIR} $${OBJECTS_DIR}
      
-QMAKE_EXTRA_TARGETS += debug
 debug.commands = $(MAKE) $(TARGET) DEFINES+="-DDEBUG"
-
-HEADERS += \
-  $${SRC_DIR}/QPong.h
-
-SOURCES += \
-  $${SRC_DIR}/QPong.cpp \
-  $${SRC_DIR}/Main.cpp
+QMAKE_EXTRA_TARGETS += debug
